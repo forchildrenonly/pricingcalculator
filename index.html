@@ -1,0 +1,609 @@
+<html>
+<head>
+  <title>FOR CHILDREN ONLY Weekly Pricing Calculator</title>
+  <style>
+    :root {
+      --fco-blue: #00a0dc;
+      --fco-dark: #333333;
+    }
+    
+    body { 
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+      color: var(--fco-dark);
+      background-color: #F4F1E0;
+    }
+
+    h1 {
+      color: var(--fco-blue);
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+
+    .child-section { 
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    select, input, button {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin: 5px 0;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: var(--fco-blue);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0088c2;
+    }
+
+    label {
+      display: inline-block;
+      margin: 10px 0;
+      font-weight: 500;
+    }
+
+    #results {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    #results h2 {
+      color: var(--fco-blue);
+      margin-top: 0;
+    }
+
+    .location-select {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .discount-section {
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .discount-section h3 {
+      color: var(--fco-blue);
+      margin-top: 0;
+    }
+
+    .discount-info {
+      font-size: 0.9em;
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    .discount-info ul {
+      margin: 5px 0;
+    }
+
+    .discount-info em {
+      color: var(--fco-dark);
+      font-size: 0.9em;
+    }
+
+    .contact-section {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .contact-section h3 {
+      color: var(--fco-blue);
+      margin-top: 0;
+    }
+
+    .contact-buttons {
+      display: flex;
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .contact-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 15px;
+      border-radius: 4px;
+      text-decoration: none;
+      color: white;
+      background-color: var(--fco-blue);
+    }
+
+    .contact-button:hover {
+      background-color: #0088c2;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    /* Add responsive adjustments */
+    @media (max-width: 640px) {
+      body {
+        padding: 15px;
+      }
+
+      .contact-buttons, .action-buttons {
+        flex-direction: column;
+      }
+
+      .contact-button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>FOR CHILDREN ONLY Weekly Pricing Calculator</h1>
+  <form id="pricingForm">
+    <div class="location-select">
+      <label for="location">Select Location:</label>
+      <select id="location" name="location" required onchange="updateAllEnrollmentOptions()">
+        <option value="">--Choose--</option>
+        <option value="friendswood">Friendswood</option>
+        <option value="league_city">League City</option>
+        <option value="pearland">Pearland</option>
+      </select>
+    </div>
+
+    <div style="text-align: center; margin-bottom: 20px;">
+      <label for="numChildren">Number of Children:</label>
+      <input type="number" id="numChildren" name="numChildren" min="1" required>
+    </div>
+
+    <div class="discount-section">
+      <h3>Discount Eligibility</h3>
+      <p style="margin-bottom: 15px;">If you are a first responder or teacher, you may be eligible for a 10% discount on weekly rates. Please check the box below if this applies to you:</p>
+      <label>
+        <input type="checkbox" id="firstResponder" name="firstResponder">
+        First Responder/Teacher Discount
+      </label>
+      <p class="discount-info">
+        Eligible occupations:
+        <ul>
+          <li>Active Military Personnel</li>
+          <li>Firefighters</li>
+          <li>Police Officers</li>
+          <li>Current Teachers</li>
+        </ul>
+        <em>* Valid, current proof of occupation required for discount</em>
+      </p>
+    </div>
+
+    <div id="childrenContainer"></div>
+    <div id="results"></div>
+  </form>
+
+  <script>
+    const pricing = {
+      friendswood: {
+        infant: { 
+          full: 270, 
+          part: null,
+          three_day: null,
+          summer_holiday: null
+        },
+        pretoddler: { 
+          full: 250,
+          part: null,
+          three_day: null,
+          summer_holiday: null
+        },
+        toddler: { 
+          full: 235, 
+          part: 140, 
+          three_day: 165,
+          summer_holiday: null
+        },
+        threes: { 
+          full: 225, 
+          part: 135, 
+          three_day: 160,
+          summer_holiday: 235,
+          part_summer_holiday: 170
+        },
+        prek: { 
+          full: 215, 
+          part: 130, 
+          three_day: 155,
+          summer_holiday: 225,
+          part_summer_holiday: 165
+        },
+        school: { 
+          full: 140, 
+          part: 100, 
+          three_day: 110,
+          summer_holiday: 170,
+          part_summer_holiday: 145
+        }
+      },
+      league_city: {
+        infant: { 
+          full: 245, 
+          part: null,
+          three_day: null,
+          summer_holiday: null
+        },
+        pretoddler: { 
+          full: 225,
+          part: null,
+          three_day: null,
+          summer_holiday: null
+        },
+        toddler: { 
+          full: 215, 
+          part: 130, 
+          three_day: null,
+          summer_holiday: null
+        },
+        threes: { 
+          full: 205, 
+          part: 125, 
+          three_day: null,
+          summer_holiday: 215
+        },
+        prek: { 
+          full: 195, 
+          part: 120, 
+          three_day: null,
+          summer_holiday: 205
+        },
+        school: { 
+          full: 120, 
+          part: 90, 
+          three_day: null,
+          summer_holiday: 150,
+          part_summer_holiday: 110
+        }
+      },
+      pearland: {
+        infant: { 
+          full: 260, 
+          part: null,
+          three_day: null,
+          summer_holiday: null
+        },
+        pretoddler: { 
+          full: 240,
+          part: null,
+          three_day: null,
+          summer_holiday: null
+        },
+        toddler: { 
+          full: 225, 
+          part: 120, 
+          three_day: 155,
+          summer_holiday: null
+        },
+        threes: { 
+          full: 215, 
+          part: 120, 
+          three_day: 150,
+          summer_holiday: 225
+        },
+        prek: { 
+          full: 205, 
+          part: 120, 
+          three_day: 145,
+          summer_holiday: 215
+        },
+        school: { 
+          full: 130, 
+          part: 90, 
+          three_day: null,
+          summer_holiday: 160,
+          part_summer_holiday: 115
+        }
+      }
+    };
+
+    const locationInfo = {
+      pearland: {
+        address: '2302 E Broadway, Pearland, Texas 77573',
+        phone: '281-485-5364',
+        email: 'pfcoinc@gmail.com'
+      },
+      league_city: {
+        address: '2205 W Main St, League City, TX 77573',
+        phone: '281-338-0606',
+        email: 'lcfcoinc@gmail.com'
+      },
+      friendswood: {
+        address: '1415 S Friendswood Dr, Friendswood, TX 77546',
+        phone: '281-482-0657',
+        email: 'fwfcoinc@gmail.com'
+      }
+    };
+
+    function generateChildSections() {
+      const num = parseInt(document.getElementById('numChildren').value);
+      const container = document.getElementById('childrenContainer');
+      container.innerHTML = '';
+      for (let i = 0; i < num; i++) {
+        const div = document.createElement('div');
+        div.className = 'child-section';
+        div.id = 'child-' + i;
+        div.innerHTML = `
+          <h3>Child ${i+1}</h3>
+          <label for="age-${i}">Age Group:</label>
+          <select id="age-${i}" name="age" onchange="updateEnrollmentOptions(${i})">
+            <option value="">--Select Age Group--</option>
+            <option value="infant">Infant (6 weeks - 12 months)</option>
+            <option value="pretoddler">Pre-Toddler (13-23 months)</option>
+            <option value="toddler">Toddler (24-35 months)</option>
+            <option value="threes">Three's (36-48 months)</option>
+            <option value="prek">Pre-K (4-5 years)</option>
+            <option value="school">School Age (5+ years)</option>
+          </select>
+          <br/><br/>
+          <label for="rate-${i}">Enrollment Type:</label>
+          <select id="rate-${i}" name="rate">
+            <option value="full">Full Time</option>
+            <option value="part">Part Time</option>
+            <option value="three_day">3 Day</option>
+            <option value="summer_holiday">Summer/Holiday</option>
+            <option value="part_summer_holiday">Part Time Summer/Holiday</option>
+          </select>
+        `;
+        container.appendChild(div);
+        updateEnrollmentOptions(i);
+      }
+      if (!document.getElementById('calcButton')) {
+        const calcBtn = document.createElement('button');
+        calcBtn.type = 'button';
+        calcBtn.id = 'calcButton';
+        calcBtn.textContent = 'Calculate Weekly Pricing';
+        calcBtn.onclick = calculatePricing;
+        container.appendChild(calcBtn);
+      }
+    }
+
+    function updateAllEnrollmentOptions() {
+      const num = parseInt(document.getElementById('numChildren').value);
+      for (let i = 0; i < num; i++) {
+        updateEnrollmentOptions(i);
+      }
+    }
+
+    function updateEnrollmentOptions(childIndex) {
+      const location = document.getElementById('location').value;
+      if (!location) return;
+      
+      const ageSelect = document.getElementById(`age-${childIndex}`);
+      const rateSelect = document.getElementById(`rate-${childIndex}`);
+      const selectedAge = ageSelect.value;
+      
+      Array.from(rateSelect.options).forEach(option => {
+        option.style.display = 'none';
+      });
+
+      if (selectedAge) {
+        const availableRates = pricing[location][selectedAge];
+        Object.keys(availableRates).forEach(rate => {
+          if (availableRates[rate] !== null) {
+            const option = rateSelect.querySelector(`option[value="${rate}"]`);
+            if (option) option.style.display = '';
+          }
+        });
+
+        const firstVisibleOption = Array.from(rateSelect.options).find(option => option.style.display !== 'none');
+        if (firstVisibleOption) rateSelect.value = firstVisibleOption.value;
+      }
+    }
+
+    function calculatePricing() {
+      const location = document.getElementById('location').value;
+      if (!location) {
+        alert('Please select a location.');
+        return;
+      }
+      
+      const isFirstResponder = document.getElementById('firstResponder').checked;
+      const num = parseInt(document.getElementById('numChildren').value);
+      let total = 0;
+      let childPrices = [];
+      let children = [];
+      
+      const ageOrder = {
+        'infant': 0,
+        'pretoddler': 1,
+        'toddler': 2,
+        'threes': 3,
+        'prek': 4,
+        'school': 5
+      };
+      
+      for (let i = 0; i < num; i++) {
+        const ageCat = document.getElementById(`age-${i}`).value;
+        if (!ageCat) {
+          alert('Please select an age group for all children.');
+          return;
+        }
+        
+        const rateType = document.getElementById(`rate-${i}`).value;
+        children.push({ 
+          index: i,
+          ageCat, 
+          rateType,
+          ageValue: ageOrder[ageCat]
+        });
+      }
+      
+      children.sort((a, b) => b.ageValue - a.ageValue);
+      
+      children.forEach((child, arrayIndex) => {
+        const locationPricing = pricing[location];
+        
+        if (!locationPricing[child.ageCat] || !locationPricing[child.ageCat][child.rateType]) {
+          alert(`Selected enrollment type is not available for ${child.ageCat} at ${location}.`);
+          return;
+        }
+        
+        let price = locationPricing[child.ageCat][child.rateType];
+        
+        if (isFirstResponder) price *= 0.9;
+        
+        if (arrayIndex === 0 && children.length > 1) {
+          price *= 0.9;
+        }
+        
+        childPrices[child.index] = price;
+      });
+      
+      total = childPrices.reduce((sum, price) => sum + price, 0);
+      
+      let breakdown = '<h2>Weekly Pricing Breakdown</h2>';
+      if (children.length > 1) {
+        breakdown += '<p style="color: var(--fco-blue);"><i>Note: 10% sibling discount applied to oldest child</i></p>';
+      }
+      
+      for (let i = 0; i < children.length; i++) {
+        let priceNote = '';
+        if (children.length > 1 && i === children[0].index) {
+          const originalPrice = childPrices[i] / 0.9;
+          priceNote = ` <span style="color: var(--fco-blue);">(includes 10% sibling discount - original price: $${originalPrice.toFixed(2)})</span>`;
+        }
+        breakdown += `<p>Child ${i+1} (${children.find(c => c.index === i).ageCat}): $${childPrices[i].toFixed(2)} per week${priceNote}</p>`;
+      }
+      
+      if (isFirstResponder) {
+        breakdown += `
+          <p style="color: var(--fco-blue);">
+            <i>First Responder/Teacher discount (10%) applied to all rates<br>
+            <small>* Valid proof of current occupation required for discount to remain active</small></i>
+          </p>`;
+      }
+      
+      breakdown += `<h3>Total Weekly Rate: $${total.toFixed(2)}</h3>`;
+      
+      const selectedLocation = locationInfo[location];
+      const locationName = location.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
+      breakdown += `
+        <div class="contact-section">
+          <h3>Contact ${locationName} Location</h3>
+          <p>${selectedLocation.address}</p>
+          <p>Phone: ${selectedLocation.phone}</p>
+          <div class="action-buttons">
+            <a href="https://www.forchildrenonlydayschool.com/contact" class="contact-button">
+              Ready to Enroll / Learn More
+            </a>
+            <a href="https://www.forchildrenonlydayschool.com/" class="contact-button">
+              Visit Main Website
+            </a>
+          </div>
+          <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
+            <p style="margin-bottom: 10px;">Want to save this price quote for later?</p>
+            <button type="button" onclick="emailPriceQuote()" class="contact-button">
+              Email Price Quote to Me
+            </button>
+          </div>
+        </div>`;
+
+      document.getElementById('results').innerHTML = breakdown;
+      
+      // Store pricing information for email quote
+      window.currentPriceQuote = {
+        location: locationName,
+        children: children,
+        childPrices: childPrices,
+        total: total,
+        isFirstResponder: isFirstResponder,
+        contactInfo: selectedLocation
+      };
+
+      // Add smooth scroll to bottom after results are displayed
+      setTimeout(() => {
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+
+    function emailPriceQuote() {
+      const quote = window.currentPriceQuote;
+      if (!quote) return;
+
+      // Format the email body
+      let emailBody = `FOR CHILDREN ONLY Price Quote\n\n`;
+      emailBody += `${quote.location} Location\n`;
+      emailBody += `${quote.contactInfo.address}\n`;
+      emailBody += `Phone: ${quote.contactInfo.phone}\n`;
+      emailBody += `Email: ${quote.contactInfo.email}\n\n`;
+      
+      emailBody += `Weekly Pricing Breakdown:\n`;
+      if (quote.children.length > 1) {
+        emailBody += `(Including 10% sibling discount for oldest child)\n`;
+      }
+      
+      quote.children.forEach((child, i) => {
+        const price = quote.childPrices[child.index];
+        let childInfo = `Child ${child.index + 1} (${child.ageCat}): $${price.toFixed(2)} per week`;
+        if (quote.children.length > 1 && i === 0) {
+          const originalPrice = price / 0.9;
+          childInfo += ` (original price before sibling discount: $${originalPrice.toFixed(2)})`;
+        }
+        emailBody += `${childInfo}\n`;
+      });
+
+      if (quote.isFirstResponder) {
+        emailBody += `\nFirst Responder/Teacher discount (10%) applied to all rates`;
+        emailBody += `\n(Valid proof of current occupation required for discount)\n`;
+      }
+
+      emailBody += `\nTotal Weekly Rate: $${quote.total.toFixed(2)}`;
+      
+      emailBody += `\n\nReady to enroll? Visit: https://www.forchildrenonlydayschool.com/contact`;
+
+      // Create mailto link with the formatted content and CC the school
+      const mailtoLink = `mailto:?cc=${encodeURIComponent(quote.contactInfo.email)}&subject=FOR CHILDREN ONLY Price Quote - ${quote.location}&body=${encodeURIComponent(emailBody)}`;
+      window.location.href = mailtoLink;
+    }
+
+    function handlePhoneClick(phoneNumber) {
+      // Check if device is mobile
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      
+      if (isMobile) {
+        window.location.href = `tel:${phoneNumber.replace(/[()-\s]/g, '')}`;
+      } else {
+        alert(`Please call ${phoneNumber} to speak with this location.`);
+      }
+    }
+
+    document.getElementById('numChildren').addEventListener('change', generateChildSections);
+  </script>
+</body>
+</html>
