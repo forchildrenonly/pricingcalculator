@@ -231,21 +231,24 @@
           part: 135, 
           three_day: 160,
           summer_holiday: 235,
-          part_summer_holiday: 170
+          part_summer_holiday: 170,
+          three_day_summer_holiday: 170
         },
         prek: { 
           full: 215, 
           part: 130, 
           three_day: 155,
           summer_holiday: 225,
-          part_summer_holiday: 165
+          part_summer_holiday: 165,
+          three_day_summer_holiday: 165
         },
         school: { 
           full: 140, 
           part: 100, 
           three_day: 110,
           summer_holiday: 180,
-          part_summer_holiday: 155
+          part_summer_holiday: 155,
+          three_day_summer_holiday: 155
         }
       },
       league_city: {
@@ -373,8 +376,10 @@
             <option value="part">Part Time</option>
             <option value="three_day">3 Day</option>
             <option value="summer_holiday">Summer/Holiday</option>
-            <option value="part_summer_holiday">Part Time Summer/Holiday</option>
+            <option value="part_summer_holiday">Summer/Holiday (Part-Time)</option>
+            <option value="three_day_summer_holiday">Summer/Holiday (3-Day)</option>
           </select>
+          <p style="font-weight: bold; margin-top: 5px; color: var(--fco-dark);">Note: Part-Time enrollment is 1-2 days per week</p>
         `;
         container.appendChild(div);
         updateEnrollmentOptions(i);
@@ -413,7 +418,13 @@
         Object.keys(availableRates).forEach(rate => {
           if (availableRates[rate] !== null) {
             const option = rateSelect.querySelector(`option[value="${rate}"]`);
-            if (option) option.style.display = '';
+            if (option) {
+              option.style.display = '';
+              // Special handling for three_day_summer_holiday - only show for Friendswood location
+              if (rate === 'three_day_summer_holiday' && location !== 'friendswood') {
+                option.style.display = 'none';
+              }
+            }
           }
         });
 
