@@ -481,9 +481,11 @@
         
         let price = locationPricing[child.ageCat][child.rateType];
         
-        if (isFirstResponder) price *= 0.9;
-        
-        if (arrayIndex === 0 && children.length > 1) {
+        // Apply first responder discount if applicable
+        if (isFirstResponder) {
+          price *= 0.9;
+        } else if (arrayIndex === 0 && children.length > 1) {
+          // Only apply sibling discount if not a first responder
           price *= 0.9;
         }
         
@@ -493,13 +495,13 @@
       total = childPrices.reduce((sum, price) => sum + price, 0);
       
       let breakdown = '<h2>Weekly Pricing Breakdown</h2>';
-      if (children.length > 1) {
+      if (children.length > 1 && !isFirstResponder) {
         breakdown += '<p style="color: var(--fco-blue);"><i>Note: 10% sibling discount applied to oldest child</i></p>';
       }
       
       for (let i = 0; i < children.length; i++) {
         let priceNote = '';
-        if (children.length > 1 && i === children[0].index) {
+        if (children.length > 1 && i === children[0].index && !isFirstResponder) {
           const originalPrice = childPrices[i] / 0.9;
           priceNote = ` <span style="color: var(--fco-blue);">(includes 10% sibling discount - original price: $${originalPrice.toFixed(2)})</span>`;
         }
