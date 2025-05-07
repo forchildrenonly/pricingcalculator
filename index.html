@@ -105,6 +105,32 @@
       font-size: 0.9em;
     }
 
+    .info-box {
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #f5f5f5;
+      border-radius: 8px;
+      font-size: 0.9em;
+    }
+
+    .info-box table {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    .info-box td {
+      padding: 5px 10px;
+    }
+
+    .info-box td:first-child {
+      font-weight: 500;
+    }
+
+    .info-box .summer-dates {
+      margin-top: 10px;
+      font-style: italic;
+    }
+
     .contact-section {
       margin-top: 30px;
       padding: 20px;
@@ -199,6 +225,26 @@
         </ul>
         <em>* Valid, current proof of occupation required for discount</em>
       </p>
+    </div>
+
+    <div class="info-box">
+      <table>
+        <tr>
+          <td>Full Time:</td>
+          <td>4-5 days per week</td>
+        </tr>
+        <tr>
+          <td>3 Day:</td>
+          <td>3 days per week</td>
+        </tr>
+        <tr>
+          <td>Part Time:</td>
+          <td>1-2 days per week</td>
+        </tr>
+      </table>
+      <div class="summer-dates">
+        Summer rates apply from June 2nd, 2025 through the week of August 9th, 2025
+      </div>
     </div>
 
     <div id="childrenContainer"></div>
@@ -377,7 +423,7 @@
           </select>
           <br/><br/>
           <label for="rate-${i}">Enrollment Type:</label>
-          <select id="rate-${i}" name="rate">
+          <select id="rate-${i}" name="rate" onchange="updateEnrollmentNote(${i})">
             <option value="full">Full Time</option>
             <option value="part">Part Time</option>
             <option value="three_day">3 Day</option>
@@ -386,7 +432,7 @@
             <option value="three_day_summer_holiday">Summer (3-Day)</option>
             <option value="holiday_week">Holiday Week</option>
           </select>
-          <p style="font-weight: bold; margin-top: 5px; color: var(--fco-dark);">Note: Part-Time enrollment is 1-2 days per week</p>
+          <p id="enrollment-note-${i}" style="display: none; color: var(--fco-blue); margin-top: 5px;"></p>
         `;
         container.appendChild(div);
         updateEnrollmentOptions(i);
@@ -405,6 +451,18 @@
       const num = parseInt(document.getElementById('numChildren').value);
       for (let i = 0; i < num; i++) {
         updateEnrollmentOptions(i);
+      }
+    }
+
+    function updateEnrollmentNote(childIndex) {
+      const rateSelect = document.getElementById(`rate-${childIndex}`);
+      const noteElement = document.getElementById(`enrollment-note-${childIndex}`);
+      
+      if (rateSelect.value === 'holiday_week') {
+        noteElement.textContent = 'Holiday Weeks are Spring Break and the week of Christmas and New Years Holidays';
+        noteElement.style.display = 'block';
+      } else {
+        noteElement.style.display = 'none';
       }
     }
 
@@ -436,7 +494,10 @@
         });
 
         const firstVisibleOption = Array.from(rateSelect.options).find(option => option.style.display !== 'none');
-        if (firstVisibleOption) rateSelect.value = firstVisibleOption.value;
+        if (firstVisibleOption) {
+          rateSelect.value = firstVisibleOption.value;
+          updateEnrollmentNote(childIndex);
+        }
       }
     }
 
