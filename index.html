@@ -224,29 +224,34 @@
           full: 235, 
           part: 140, 
           three_day: 165,
-          summer_holiday: 245
+          summer_holiday: 245,
+          three_day_summer_holiday: 175,
+          part_summer_holiday: 155
         },
         threes: { 
           full: 225, 
           part: 135, 
           three_day: 160,
           summer_holiday: 235,
-          three_day_summer_holiday: 170
+          three_day_summer_holiday: 170,
+          part_summer_holiday: 150
         },
         prek: { 
           full: 215, 
           part: 130, 
           three_day: 155,
           summer_holiday: 225,
-          three_day_summer_holiday: 165
+          three_day_summer_holiday: 165,
+          part_summer_holiday: 145
         },
         school: { 
           full: 140, 
           part: 100, 
           three_day: 110,
           summer_holiday: 180,
-          part_summer_holiday: 130,
-          three_day_summer_holiday: 155
+          part_summer_holiday: 135,
+          three_day_summer_holiday: 155,
+          holiday_week: 160
         }
       },
       league_city: {
@@ -285,7 +290,8 @@
           part: 90, 
           three_day: null,
           summer_holiday: 160,
-          part_summer_holiday: 120
+          part_summer_holiday: 120,
+          holiday_week: 140
         }
       },
       pearland: {
@@ -324,7 +330,8 @@
           part: 90, 
           three_day: null,
           summer_holiday: 170,
-          part_summer_holiday: 125
+          part_summer_holiday: 125,
+          holiday_week: 150
         }
       }
     };
@@ -376,6 +383,7 @@
             <option value="summer_holiday">Summer</option>
             <option value="part_summer_holiday">Summer (Part-Time)</option>
             <option value="three_day_summer_holiday">Summer (3-Day)</option>
+            <option value="holiday_week">Holiday Week</option>
           </select>
           <p style="font-weight: bold; margin-top: 5px; color: var(--fco-dark);">Note: Part-Time enrollment is 1-2 days per week</p>
         `;
