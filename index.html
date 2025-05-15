@@ -491,10 +491,6 @@
             const option = rateSelect.querySelector(`option[value="${rate}"]`);
             if (option) {
               option.style.display = '';
-              // Special handling for three_day_summer_holiday - only show for Friendswood location
-              if (rate === 'three_day_summer_holiday' && location !== 'friendswood') {
-                option.style.display = 'none';
-              }
             }
           }
         });
