@@ -1,0 +1,150 @@
+FOR CHILDREN ONLY PRICING UPDATE TEMPLATE
+==========================================
+
+Instructions:
+- Replace the current values with your new pricing
+- Use "null" for enrollment types not offered at that location/age group
+- Keep the same structure and formatting
+
+FRIENDSWOOD LOCATION:
+---------------------
+Infant (6 weeks - 12 months):
+  Full Time (4-5 days): $270
+  Part Time (1-2 days): null
+  3 Day: null
+  Summer: null
+
+Pre-Toddler (13-23 months):
+  Full Time (4-5 days): $250
+  Part Time (1-2 days): null
+  3 Day: null
+  Summer: null
+
+Toddler (24-35 months):
+  Full Time (4-5 days): $235
+  Part Time (1-2 days): $140
+  3 Day: $165
+  Summer: $245
+  Summer Part-Time: $155
+  Summer 3-Day: $175
+
+Three's (36-48 months):
+  Full Time (4-5 days): $225
+  Part Time (1-2 days): $135
+  3 Day: $160
+  Summer: $235
+  Summer Part-Time: $150
+  Summer 3-Day: $170
+
+Pre-K (4-5 years):
+  Full Time (4-5 days): $215
+  Part Time (1-2 days): $130
+  3 Day: $155
+  Summer: $225
+  Summer Part-Time: $145
+  Summer 3-Day: $165
+
+School Age (5+ years):
+  Full Time (4-5 days): $140
+  Part Time (1-2 days): $100
+  3 Day: $110
+  Summer: $180
+  Summer Part-Time: $135
+  Summer 3-Day: $155
+  Holiday Week: $160
+
+LEAGUE CITY LOCATION:
+---------------------
+Infant (6 weeks - 12 months):
+  Full Time (4-5 days): $245
+  Part Time (1-2 days): null
+  3 Day: null
+  Summer: null
+
+Pre-Toddler (13-23 months):
+  Full Time (4-5 days): $225
+  Part Time (1-2 days): null
+  3 Day: null
+  Summer: null
+
+Toddler (24-35 months):
+  Full Time (4-5 days): $215
+  Part Time (1-2 days): $130
+  3 Day: null
+  Summer: $225
+
+Three's (36-48 months):
+  Full Time (4-5 days): $205
+  Part Time (1-2 days): $125
+  3 Day: null
+  Summer: $215
+
+Pre-K (4-5 years):
+  Full Time (4-5 days): $195
+  Part Time (1-2 days): $120
+  3 Day: null
+  Summer: $205
+
+School Age (5+ years):
+  Full Time (4-5 days): $120
+  Part Time (1-2 days): $90
+  3 Day: null
+  Summer: $160
+  Summer Part-Time: $120
+  Holiday Week: $140
+
+PEARLAND LOCATION:
+------------------
+Infant (6 weeks - 12 months):
+  Full Time (4-5 days): $260
+  Part Time (1-2 days): null
+  3 Day: null
+  Summer: null
+
+Pre-Toddler (13-23 months):
+  Full Time (4-5 days): $240
+  Part Time (1-2 days): $145
+  3 Day: $175
+  Summer: null
+
+Toddler (24-35 months):
+  Full Time (4-5 days): $225
+  Part Time (1-2 days): $120
+  3 Day: $155
+  Summer: $235
+  Summer Part-Time: $150
+  Summer 3-Day: $170
+
+Three's (36-48 months):
+  Full Time (4-5 days): $215
+  Part Time (1-2 days): $120
+  3 Day: $150
+  Summer: $225
+  Summer Part-Time: $155
+  Summer 3-Day: $165
+
+Pre-K (4-5 years):
+  Full Time (4-5 days): $205
+  Part Time (1-2 days): $120
+  3 Day: $145
+  Summer: $215
+  Summer Part-Time: $150
+  Summer 3-Day: $160
+
+School Age (5+ years):
+  Full Time (4-5 days): $130
+  Part Time (1-2 days): $100
+  3 Day: null
+  Summer: $170
+  Summer Part-Time: $125
+  Summer 3-Day: $150
+  Holiday Week: $150
+
+==========================================
+NOTES:
+- Use "null" for enrollment types not offered
+- All prices are weekly rates
+- Summer rates apply June 2nd - August 9th, 2025
+- Holiday weeks are Spring Break and Christmas/New Years weeks
+- First Responder/Teacher discount is 10% off all rates
+- Sibling discount is 10% off oldest child (when not using First Responder discount)
