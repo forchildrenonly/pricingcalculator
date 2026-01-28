@@ -74,6 +74,53 @@
 
     .location-select {
       margin-bottom: 20px;
+      text-align: left;
+      padding: 15px;
+      background-color: #E8F4F8;
+      border: 2px solid var(--fco-blue);
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .location-select label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: var(--fco-dark);
+    }
+
+    .location-select select {
+      background-color: #ffffff;
+      border: 2px solid var(--fco-blue);
+      font-size: 16px;
+      padding: 10px 15px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .num-children-container {
+      text-align: left;
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: #E8F4F8;
+      border: 2px solid var(--fco-blue);
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .num-children-container label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: var(--fco-dark);
+    }
+
+    .num-children-container input {
+      background-color: #ffffff;
+      border: 2px solid var(--fco-blue);
+      font-size: 16px;
+      padding: 10px 15px;
+      width: 100px;
       text-align: center;
     }
 
@@ -203,7 +250,7 @@
       </select>
     </div>
 
-    <div style="text-align: center; margin-bottom: 20px;">
+    <div class="num-children-container">
       <label for="numChildren">Number of Children:</label>
       <input type="number" id="numChildren" name="numChildren" min="1" required>
     </div>
