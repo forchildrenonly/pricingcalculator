@@ -6,10 +6,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&family=Poppins:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --fco-blue: #00a0dc;
-      --fco-dark: #333333;
-      --fco-orange: #F45424;
+      /* Primary - Brand Guide */
+      --fco-bright-red: #F45424;
+      --fco-light-cream: #F4F1E0;
+      --fco-moderate-blue: #2f74b8;
+      /* Secondary - Brand Guide */
+      --fco-lime-green: #3D8C31;
+      --fco-bright-orange: #FCC847;
+      --fco-magenta: #B110D5;
+      /* Aliases (for existing usage) */
+      --fco-blue: var(--fco-moderate-blue);
+      --fco-orange: var(--fco-bright-red);
       --fco-orange-tint: #FEF3F0;
+      --fco-dark: #333333;
       --font-header: 'Bricolage Grotesque', sans-serif;
       --font-body: 'Poppins', sans-serif;
     }
@@ -22,7 +31,7 @@
       max-width: 600px;
       margin: 0 auto;
       color: var(--fco-dark);
-      background-color: #F4F1E0;
+      background-color: var(--fco-light-cream);
     }
 
     h1 {
@@ -64,7 +73,7 @@
     }
 
     button:hover {
-      background-color: #0088c2;
+      background-color: #2563a0;
     }
 
     label {
@@ -184,7 +193,7 @@
     .info-box {
       margin: 20px 0;
       padding: 15px;
-      background-color: #f5f5f5;
+      background-color: #F8F7E8;
       border-radius: 8px;
       font-size: 0.9em;
     }
@@ -242,7 +251,7 @@
     }
 
     .contact-button:hover {
-      background-color: #0088c2;
+      background-color: #2563a0;
     }
 
     .action-buttons {
