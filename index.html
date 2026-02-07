@@ -1,15 +1,22 @@
 <html>
 <head>
   <title>FOR CHILDREN ONLY Weekly Pricing Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&family=Poppins:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
   <style>
     :root {
       --fco-blue: #00a0dc;
       --fco-dark: #333333;
       --fco-orange: #F45424;
+      --font-header: 'Bricolage Grotesque', sans-serif;
+      --font-body: 'Poppins', sans-serif;
     }
     
     body { 
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: var(--font-body);
+      font-size: 18px;
+      font-weight: 400;
       padding: 20px;
       max-width: 600px;
       margin: 0 auto;
@@ -18,10 +25,13 @@
     }
 
     h1 {
-      color: var(--fco-blue);
+      font-family: var(--font-header);
+      font-weight: 800;
+      font-size: 75px;
+      color: var(--fco-orange);
       text-align: center;
-      font-size: 2.5em;
       margin-bottom: 30px;
+      line-height: 1.1;
     }
 
     .child-section { 
@@ -34,6 +44,7 @@
     }
 
     select, input, button {
+      font-family: var(--font-body);
       padding: 8px 12px;
       border: 1px solid #ddd;
       border-radius: 4px;
@@ -55,9 +66,11 @@
     }
 
     label {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 24px;
       display: inline-block;
       margin: 10px 0;
-      font-weight: 500;
     }
 
     #results {
@@ -68,9 +81,17 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    #results h2 {
-      color: var(--fco-blue);
+    h2 {
+      font-family: var(--font-header);
+      font-weight: 800;
+      font-size: 54px;
+      color: var(--fco-dark);
       margin-top: 0;
+    }
+
+    #results h2 {
+      font-size: 42px;
+      color: var(--fco-blue);
     }
 
     .location-select {
@@ -83,10 +104,11 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    .location-select label {
+    .location-select label,
+    .num-children-container label {
       display: block;
       margin-bottom: 10px;
-      font-weight: 600;
+      font-size: 24px;
       color: var(--fco-dark);
     }
 
@@ -109,12 +131,6 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    .num-children-container label {
-      display: block;
-      margin-bottom: 10px;
-      font-weight: 600;
-      color: var(--fco-dark);
-    }
 
     .num-children-container input {
       background-color: #ffffff;
@@ -133,9 +149,17 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    .discount-section h3 {
-      color: var(--fco-blue);
+    h3 {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 36px;
+      color: var(--fco-dark);
       margin-top: 0;
+    }
+
+    .discount-section h3 {
+      font-size: 30px;
+      color: var(--fco-blue);
     }
 
     .discount-info {
@@ -149,6 +173,8 @@
     }
 
     .discount-info em {
+      font-family: var(--font-body);
+      font-style: italic;
       color: var(--fco-dark);
       font-size: 0.9em;
     }
@@ -171,12 +197,14 @@
     }
 
     .info-box td:first-child {
-      font-weight: 500;
+      font-weight: 600;
+      font-size: 24px;
     }
 
     .info-box .summer-dates {
       margin-top: 10px;
       font-style: italic;
+      font-family: var(--font-body);
     }
 
     .contact-section {
@@ -189,6 +217,7 @@
     }
 
     .contact-section h3 {
+      font-size: 30px;
       color: var(--fco-blue);
       margin-top: 0;
     }
@@ -225,6 +254,22 @@
     @media (max-width: 640px) {
       body {
         padding: 15px;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+
+      h2 {
+        font-size: 36px;
+      }
+
+      #results h2 {
+        font-size: 30px;
+      }
+
+      h3 {
+        font-size: 24px;
       }
 
       .contact-buttons, .action-buttons {
