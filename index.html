@@ -358,7 +358,7 @@
         </tr>
       </table>
       <div class="summer-dates">
-        Summer rates apply from June 2nd, 2025 through the week of August 9th, 2025
+        Summer rates apply through August 1st, 2026
       </div>
     </div>
 
@@ -369,140 +369,199 @@
   <script>
     const pricing = {
       friendswood: {
-        infant: { 
-          full: 285, 
+        infant: {
+          full: 285,
           part: null,
           three_day: null,
-          summer_holiday: null
+          summer_holiday: null,
+          holiday: null,
+          part_summer_holiday: null,
+          three_day_summer_holiday: null
         },
-        pretoddler: { 
+        pretoddler: {
           full: 270,
           part: null,
           three_day: null,
-          summer_holiday: null
+          summer_holiday: null,
+          holiday: null,
+          part_summer_holiday: null,
+          three_day_summer_holiday: null
         },
-        toddler: { 
-          full: 250, 
-          part: 150, 
+        toddler: {
+          full: 250,
+          part: 150,
           three_day: 175,
-          summer_holiday: 245,
-          three_day_summer_holiday: 175,
-          part_summer_holiday: 155
+          summer_holiday: 260,
+          holiday: null,
+          part_summer_holiday: 170,
+          three_day_summer_holiday: 190
         },
-        threes: { 
-          full: 240, 
-          part: 145, 
+        threes: {
+          full: 240,
+          part: 145,
           three_day: 165,
-          summer_holiday: 235,
-          three_day_summer_holiday: 170,
-          part_summer_holiday: 150
+          summer_holiday: 250,
+          holiday: null,
+          part_summer_holiday: 165,
+          three_day_summer_holiday: 185
         },
-        prek: { 
-          full: 225, 
-          part: 135, 
+        prek: {
+          full: 225,
+          part: 135,
           three_day: 160,
-          summer_holiday: 225,
-          three_day_summer_holiday: 165,
-          part_summer_holiday: 145
+          summer_holiday: 250,
+          holiday: null,
+          part_summer_holiday: 160,
+          three_day_summer_holiday: 180
         },
-        school: { 
-          full: 145, 
-          part: 105, 
+        school: {
+          full: 145,
+          part: 105,
           three_day: 115,
-          summer_holiday: 180,
-          part_summer_holiday: 135,
-          three_day_summer_holiday: 155,
-          holiday_week: 160
+          summer_holiday: 200,
+          holiday: 170,
+          part_summer_holiday: 170,
+          three_day_summer_holiday: 185
         }
       },
       league_city: {
-        infant: { 
-          full: 260, 
+        infant: {
+          full: 260,
           part: null,
           three_day: null,
-          summer_holiday: null
+          summer_holiday: null,
+          holiday: null,
+          part_summer_holiday: null,
+          three_day_summer_holiday: null
         },
-        pretoddler: { 
+        pretoddler: {
           full: 245,
           part: null,
           three_day: null,
-          summer_holiday: null
+          summer_holiday: null,
+          holiday: null,
+          part_summer_holiday: null,
+          three_day_summer_holiday: null
         },
-        toddler: { 
-          full: 230, 
-          part: 140, 
+        toddler: {
+          full: 230,
+          part: 140,
           three_day: null,
-          summer_holiday: 225
+          summer_holiday: 240,
+          holiday: null,
+          part_summer_holiday: 150,
+          three_day_summer_holiday: null
         },
-        threes: { 
-          full: 220, 
-          part: 125, 
-          three_day: null,
-          summer_holiday: 230
+        threes: {
+          full: 220,
+          part: 130,
+          three_day: 150,
+          summer_holiday: 230,
+          holiday: null,
+          part_summer_holiday: 140,
+          three_day_summer_holiday: null
         },
-        prek: { 
-          full: 205, 
-          part: 120, 
+        prek: {
+          full: 205,
+          part: 120,
           three_day: null,
-          summer_holiday: 215
+          summer_holiday: 225,
+          holiday: null,
+          part_summer_holiday: 140,
+          three_day_summer_holiday: null
         },
-        school: { 
-          full: 125, 
-          part: 95, 
+        school: {
+          full: 125,
+          part: 95,
           three_day: null,
-          summer_holiday: 160,
-          part_summer_holiday: 120,
-          holiday_week: 140
+          summer_holiday: 175,
+          holiday: 160,
+          part_summer_holiday: 155,
+          three_day_summer_holiday: null
         }
       },
       pearland: {
-        infant: { 
-          full: 270, 
+        infant: {
+          full: 270,
           part: null,
           three_day: null,
-          summer_holiday: null
+          summer_holiday: null,
+          holiday: null,
+          part_summer_holiday: null,
+          three_day_summer_holiday: null
         },
-        pretoddler: { 
+        pretoddler: {
           full: 255,
           part: 155,
           three_day: 185,
-          summer_holiday: null
+          summer_holiday: null,
+          holiday: null,
+          part_summer_holiday: null,
+          three_day_summer_holiday: null
         },
-        toddler: { 
-          full: 240, 
-          part: 135, 
+        toddler: {
+          full: 240,
+          part: 135,
           three_day: 165,
-          summer_holiday: 235,
-          three_day_summer_holiday: 170,
-          part_summer_holiday: 150
+          summer_holiday: 250,
+          holiday: null,
+          part_summer_holiday: 175,
+          three_day_summer_holiday: 185
         },
-        threes: { 
-          full: 230, 
-          part: 125, 
+        threes: {
+          full: 230,
+          part: 125,
           three_day: 155,
-          summer_holiday: 225,
-          three_day_summer_holiday: 165,
-          part_summer_holiday: 155
+          summer_holiday: 240,
+          holiday: null,
+          part_summer_holiday: 165,
+          three_day_summer_holiday: 180
         },
-        prek: { 
-          full: 215, 
-          part: 125, 
+        prek: {
+          full: 215,
+          part: 125,
           three_day: 155,
-          summer_holiday: 215,
-          three_day_summer_holiday: 160,
-          part_summer_holiday: 150
+          summer_holiday: 230,
+          holiday: null,
+          part_summer_holiday: 160,
+          three_day_summer_holiday: 170
         },
-        school: { 
-          full: 135, 
-          part: 100, 
+        school: {
+          full: 135,
+          part: 100,
           three_day: 110,
-          summer_holiday: 170,
-          part_summer_holiday: 125,
-          holiday_week: 150,
-          three_day_summer_holiday: 150
+          summer_holiday: 185,
+          holiday: 160,
+          part_summer_holiday: 145,
+          three_day_summer_holiday: 165
         }
       }
     };
+
+    const ageLabels = {
+      infant: 'Infant',
+      pretoddler: 'Pre-Toddler',
+      toddler: 'Toddler',
+      threes: "Three's",
+      prek: 'Pre-K',
+      school: 'School Age'
+    };
+
+    const rateLabels = {
+      full: 'Full Time',
+      part: 'Part Time',
+      three_day: '3 Day',
+      summer_holiday: 'Summer',
+      holiday: 'School Holiday',
+      part_summer_holiday: 'Part-Time Summer',
+      three_day_summer_holiday: '3-Day Summer'
+    };
+
+    const summerDefaultEndDate = new Date('2026-08-01T00:00:00');
+
+    function shouldDefaultToSummer() {
+      return new Date() < summerDefaultEndDate;
+    }
 
     const locationInfo = {
       pearland: {
@@ -549,9 +608,9 @@
             <option value="part">Part Time</option>
             <option value="three_day">3 Day</option>
             <option value="summer_holiday">Summer</option>
-            <option value="part_summer_holiday">Summer (Part-Time)</option>
-            <option value="three_day_summer_holiday">Summer (3-Day)</option>
-            <option value="holiday_week">Holiday Week</option>
+            <option value="holiday">School Holiday</option>
+            <option value="part_summer_holiday">Part-Time Summer</option>
+            <option value="three_day_summer_holiday">3-Day Summer</option>
           </select>
           <p id="enrollment-note-${i}" style="display: none; color: var(--fco-blue); margin-top: 5px;"></p>
         `;
@@ -579,8 +638,8 @@
       const rateSelect = document.getElementById(`rate-${childIndex}`);
       const noteElement = document.getElementById(`enrollment-note-${childIndex}`);
       
-      if (rateSelect.value === 'holiday_week') {
-        noteElement.textContent = 'Holiday Weeks are Spring Break and the week of Christmas and New Years Holidays';
+      if (rateSelect.value === 'holiday') {
+        noteElement.textContent = 'School Holiday rates apply during Spring Break and the December holiday weeks.';
         noteElement.style.display = 'block';
       } else {
         noteElement.style.display = 'none';
@@ -611,10 +670,13 @@
         });
 
         const firstVisibleOption = Array.from(rateSelect.options).find(option => option.style.display !== 'none');
-        if (firstVisibleOption) {
+        const summerOption = rateSelect.querySelector('option[value="summer_holiday"]');
+        if (shouldDefaultToSummer() && summerOption && summerOption.style.display !== 'none') {
+          rateSelect.value = 'summer_holiday';
+        } else if (firstVisibleOption) {
           rateSelect.value = firstVisibleOption.value;
-          updateEnrollmentNote(childIndex);
         }
+        updateEnrollmentNote(childIndex);
       }
     }
 
@@ -692,7 +754,8 @@
           const originalPrice = childPrices[i] / 0.9;
           priceNote = ` <span style="color: var(--fco-blue);">(includes 10% sibling discount - original price: $${originalPrice.toFixed(2)})</span>`;
         }
-        breakdown += `<p>Child ${i+1} (${children.find(c => c.index === i).ageCat}): $${childPrices[i].toFixed(2)} per week${priceNote}</p>`;
+        const child = children.find(c => c.index === i);
+        breakdown += `<p>Child ${i+1} (${ageLabels[child.ageCat]} - ${rateLabels[child.rateType]}): $${childPrices[i].toFixed(2)} per week${priceNote}</p>`;
       }
       
       if (isFirstResponder) {
@@ -762,14 +825,14 @@
       emailBody += `Email: ${quote.contactInfo.email}\n\n`;
       
       emailBody += `Weekly Pricing Breakdown:\n`;
-      if (quote.children.length > 1) {
+      if (quote.children.length > 1 && !quote.isFirstResponder) {
         emailBody += `(Including 10% sibling discount for oldest child)\n`;
       }
       
       quote.children.forEach((child, i) => {
         const price = quote.childPrices[child.index];
-        let childInfo = `Child ${child.index + 1} (${child.ageCat}): $${price.toFixed(2)} per week`;
-        if (quote.children.length > 1 && i === 0) {
+        let childInfo = `Child ${child.index + 1} (${ageLabels[child.ageCat]} - ${rateLabels[child.rateType]}): $${price.toFixed(2)} per week`;
+        if (quote.children.length > 1 && i === 0 && !quote.isFirstResponder) {
           const originalPrice = price / 0.9;
           childInfo += ` (original price before sibling discount: $${originalPrice.toFixed(2)})`;
         }
