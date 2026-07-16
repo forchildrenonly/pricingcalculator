@@ -719,19 +719,28 @@
       }
       
       children.sort((a, b) => b.ageValue - a.ageValue);
-      
-      children.forEach((child, arrayIndex) => {
-        const locationPricing = pricing[location];
-        
+
+      const locationPricing = pricing[location];
+      children.forEach(child => {
         if (!locationPricing[child.ageCat] || !locationPricing[child.ageCat][child.rateType]) {
           alert(`Selected enrollment type is not available for ${child.ageCat} at ${location}.`);
           return;
         }
-        
-        let price = locationPricing[child.ageCat][child.rateType];
+        child.basePrice = locationPricing[child.ageCat][child.rateType];
+      });
+
+      // The first responder/teacher discount applies to one child only: the
+      // first child with the lowest weekly base rate (ties are discounted once).
+      const discountedChild = isFirstResponder
+        ? children.reduce((lowest, child) => child.basePrice < lowest.basePrice ? child : lowest)
+        : null;
+      const discountedChildIndex = discountedChild ? discountedChild.index : null;
+
+      children.forEach((child, arrayIndex) => {
+        let price = child.basePrice;
         
         // Apply first responder discount if applicable
-        if (isFirstResponder) {
+        if (isFirstResponder && child.index === discountedChildIndex) {
           price *= 0.9;
         } else if (arrayIndex === 0 && children.length > 1) {
           // Only apply sibling discount if not a first responder
@@ -753,6 +762,9 @@
         if (children.length > 1 && i === children[0].index && !isFirstResponder) {
           const originalPrice = childPrices[i] / 0.9;
           priceNote = ` <span style="color: var(--fco-blue);">(includes 10% sibling discount - original price: $${originalPrice.toFixed(2)})</span>`;
+        } else if (isFirstResponder && i === discountedChildIndex) {
+          const originalPrice = childPrices[i] / 0.9;
+          priceNote = ` <span style="color: var(--fco-blue);">(includes 10% first responder/teacher discount - original price: $${originalPrice.toFixed(2)})</span>`;
         }
         const child = children.find(c => c.index === i);
         breakdown += `<p>Child ${i+1} (${ageLabels[child.ageCat]} - ${rateLabels[child.rateType]}): $${childPrices[i].toFixed(2)} per week${priceNote}</p>`;
@@ -761,7 +773,7 @@
       if (isFirstResponder) {
         breakdown += `
           <p style="color: var(--fco-blue);">
-            <i>First Responder/Teacher discount (10%) applied to all rates<br>
+            <i>First Responder/Teacher discount (10%) applied to one lowest-priced child<br>
             <small>* Valid proof of current occupation required for discount to remain active</small></i>
           </p>`;
       }
@@ -801,6 +813,7 @@
         childPrices: childPrices,
         total: total,
         isFirstResponder: isFirstResponder,
+        discountedChildIndex: discountedChildIndex,
         contactInfo: selectedLocation
       };
 
@@ -835,12 +848,15 @@
         if (quote.children.length > 1 && i === 0 && !quote.isFirstResponder) {
           const originalPrice = price / 0.9;
           childInfo += ` (original price before sibling discount: $${originalPrice.toFixed(2)})`;
+        } else if (quote.isFirstResponder && child.index === quote.discountedChildIndex) {
+          const originalPrice = price / 0.9;
+          childInfo += ` (includes 10% first responder/teacher discount - original price: $${originalPrice.toFixed(2)})`;
         }
         emailBody += `${childInfo}\n`;
       });
 
       if (quote.isFirstResponder) {
-        emailBody += `\nFirst Responder/Teacher discount (10%) applied to all rates`;
+        emailBody += `\nFirst Responder/Teacher discount (10%) applied to one lowest-priced child`;
         emailBody += `\n(Valid proof of current occupation required for discount)\n`;
       }
 
