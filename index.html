@@ -212,7 +212,7 @@
       font-size: 24px;
     }
 
-    .info-box .summer-dates {
+    .info-box .rate-effective-date {
       margin-top: 10px;
       font-style: italic;
       font-family: var(--font-body);
@@ -326,10 +326,10 @@
 
     <div class="discount-section">
       <h3>Discount Eligibility</h3>
-      <p style="margin-bottom: 15px;">If you are a first responder or teacher, you may be eligible for a 10% discount on weekly rates. Please check the box below if this applies to you:</p>
+      <p style="margin-bottom: 15px;">If a parent is actively working in the military, police, fire service, or as a teacher, your family may be eligible for a 10% discount on weekly rates. Please check the box below if this applies to you:</p>
       <label>
         <input type="checkbox" id="firstResponder" name="firstResponder">
-        First Responder/Teacher Discount
+        Military / Police / Firefighter / Teacher Discount
       </label>
       <p class="discount-info">
         Eligible occupations:
@@ -354,7 +354,7 @@
           <td>1-2 days per week</td>
         </tr>
       </table>
-      <div class="summer-dates">
+      <div class="rate-effective-date">
         Rates effective Monday, August 17, 2026.
       </div>
     </div>
@@ -397,23 +397,23 @@
           part: null
         },
         pretoddler: {
-          full: 260,
+          full: 255,
           part: null
         },
         toddler: {
-          full: 250,
+          full: 245,
           part: 150
         },
         threes: {
-          full: 240,
-          part: 145
+          full: 235,
+          part: 140
         },
         prek: {
-          full: 225,
+          full: 215,
           part: 130
         },
         school: {
-          full: 135,
+          full: 145,
           part: 100
         }
       },
@@ -461,18 +461,18 @@
 
     const locationInfo = {
       pearland: {
-        address: '2302 E Broadway, Pearland, Texas 77573',
-        phone: '281-485-5364',
+        address: '2302 E Broadway St, Pearland, TX 77581',
+        phone: '832-780-3811',
         email: 'pfcoinc@gmail.com'
       },
       league_city: {
-        address: '2205 W Main St, League City, TX 77573',
-        phone: '281-338-0606',
+        address: '2806 W Main St, League City, TX 77573',
+        phone: '832-793-9338',
         email: 'lcfcoinc@gmail.com'
       },
       friendswood: {
         address: '1415 S Friendswood Dr, Friendswood, TX 77546',
-        phone: '281-482-0657',
+        phone: '832-662-6625',
         email: 'fwfcoinc@gmail.com'
       }
     };
@@ -647,7 +647,7 @@
           priceNote = ` <span style="color: var(--fco-blue);">(includes 10% sibling discount - original price: $${originalPrice.toFixed(2)})</span>`;
         } else if (isFirstResponder && i === discountedChildIndex) {
           const originalPrice = childPrices[i] / 0.9;
-          priceNote = ` <span style="color: var(--fco-blue);">(includes 10% first responder/teacher discount - original price: $${originalPrice.toFixed(2)})</span>`;
+          priceNote = ` <span style="color: var(--fco-blue);">(includes 10% military / police / firefighter / teacher discount - original price: $${originalPrice.toFixed(2)})</span>`;
         }
         const child = children.find(c => c.index === i);
         breakdown += `<p>Child ${i+1} (${ageLabels[child.ageCat]} - ${rateLabels[child.rateType]}): $${childPrices[i].toFixed(2)} per week${priceNote}</p>`;
@@ -656,7 +656,7 @@
       if (isFirstResponder) {
         breakdown += `
           <p style="color: var(--fco-blue);">
-            <i>First Responder/Teacher discount (10%) applied to one lowest-priced child<br>
+            <i>Military / Police / Firefighter / Teacher discount (10%) applied to one lowest-priced child<br>
             <small>* Valid proof of current occupation required for discount to remain active</small></i>
           </p>`;
       }
@@ -733,19 +733,19 @@
           childInfo += ` (original price before sibling discount: $${originalPrice.toFixed(2)})`;
         } else if (quote.isFirstResponder && child.index === quote.discountedChildIndex) {
           const originalPrice = price / 0.9;
-          childInfo += ` (includes 10% first responder/teacher discount - original price: $${originalPrice.toFixed(2)})`;
+          childInfo += ` (includes 10% military / police / firefighter / teacher discount - original price: $${originalPrice.toFixed(2)})`;
         }
         emailBody += `${childInfo}\n`;
       });
 
       if (quote.isFirstResponder) {
-        emailBody += `\nFirst Responder/Teacher discount (10%) applied to one lowest-priced child`;
+        emailBody += `\nMilitary / Police / Firefighter / Teacher discount (10%) applied to one lowest-priced child`;
         emailBody += `\n(Valid proof of current occupation required for discount)\n`;
       }
 
       emailBody += `\nTotal Weekly Rate: $${quote.total.toFixed(2)}`;
       
-      emailBody += `\n\nReady to enroll? Visit: https://www.forchildrenonlydayschool.com/contact`;
+      emailBody += `\n\nReady to enroll? Visit: https://forchildrenonlydayschool.com/enroll/`;
 
       // Create mailto link with the formatted content and CC the school
       const mailtoLink = `mailto:?cc=${encodeURIComponent(quote.contactInfo.email)}&subject=FOR CHILDREN ONLY Price Quote - ${quote.location}&body=${encodeURIComponent(emailBody)}`;
