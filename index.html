@@ -349,16 +349,12 @@
           <td>4-5 days per week</td>
         </tr>
         <tr>
-          <td>3 Day:</td>
-          <td>3 days per week</td>
-        </tr>
-        <tr>
           <td>Part Time:</td>
           <td>1-2 days per week</td>
         </tr>
       </table>
       <div class="summer-dates">
-        Summer rates apply through August 1st, 2026
+        Rates effective Monday, August 17, 2026.
       </div>
     </div>
 
@@ -370,170 +366,80 @@
     const pricing = {
       friendswood: {
         infant: {
-          full: 285,
-          part: null,
-          three_day: null,
-          summer_holiday: null,
-          holiday: null,
-          part_summer_holiday: null,
-          three_day_summer_holiday: null
+          full: 295,
+          part: null
         },
         pretoddler: {
-          full: 270,
-          part: null,
-          three_day: null,
-          summer_holiday: null,
-          holiday: null,
-          part_summer_holiday: null,
-          three_day_summer_holiday: null
+          full: 285,
+          part: null
         },
         toddler: {
-          full: 250,
-          part: 150,
-          three_day: 175,
-          summer_holiday: 260,
-          holiday: null,
-          part_summer_holiday: 170,
-          three_day_summer_holiday: 190
+          full: 270,
+          part: 160
         },
         threes: {
-          full: 240,
-          part: 145,
-          three_day: 165,
-          summer_holiday: 250,
-          holiday: null,
-          part_summer_holiday: 165,
-          three_day_summer_holiday: 185
+          full: 255,
+          part: 155
         },
         prek: {
-          full: 225,
-          part: 135,
-          three_day: 160,
-          summer_holiday: 250,
-          holiday: null,
-          part_summer_holiday: 160,
-          three_day_summer_holiday: 180
+          full: 250,
+          part: 145
         },
         school: {
-          full: 145,
-          part: 105,
-          three_day: 115,
-          summer_holiday: 200,
-          holiday: 170,
-          part_summer_holiday: 170,
-          three_day_summer_holiday: 185
+          full: 148,
+          part: 108
         }
       },
       league_city: {
         infant: {
-          full: 260,
-          part: null,
-          three_day: null,
-          summer_holiday: null,
-          holiday: null,
-          part_summer_holiday: null,
-          three_day_summer_holiday: null
+          full: 270,
+          part: null
         },
         pretoddler: {
-          full: 245,
-          part: null,
-          three_day: null,
-          summer_holiday: null,
-          holiday: null,
-          part_summer_holiday: null,
-          three_day_summer_holiday: null
+          full: 260,
+          part: null
         },
         toddler: {
-          full: 230,
-          part: 140,
-          three_day: null,
-          summer_holiday: 240,
-          holiday: null,
-          part_summer_holiday: 150,
-          three_day_summer_holiday: null
+          full: 250,
+          part: 150
         },
         threes: {
-          full: 220,
-          part: 130,
-          three_day: 150,
-          summer_holiday: 230,
-          holiday: null,
-          part_summer_holiday: 140,
-          three_day_summer_holiday: null
+          full: 240,
+          part: 145
         },
         prek: {
-          full: 205,
-          part: 120,
-          three_day: null,
-          summer_holiday: 225,
-          holiday: null,
-          part_summer_holiday: 140,
-          three_day_summer_holiday: null
+          full: 225,
+          part: 130
         },
         school: {
-          full: 125,
-          part: 95,
-          three_day: null,
-          summer_holiday: 175,
-          holiday: 160,
-          part_summer_holiday: 155,
-          three_day_summer_holiday: null
+          full: 135,
+          part: 100
         }
       },
       pearland: {
         infant: {
-          full: 270,
-          part: null,
-          three_day: null,
-          summer_holiday: null,
-          holiday: null,
-          part_summer_holiday: null,
-          three_day_summer_holiday: null
+          full: 285,
+          part: null
         },
         pretoddler: {
-          full: 255,
-          part: 155,
-          three_day: 185,
-          summer_holiday: null,
-          holiday: null,
-          part_summer_holiday: null,
-          three_day_summer_holiday: null
+          full: 275,
+          part: 165
         },
         toddler: {
-          full: 240,
-          part: 135,
-          three_day: 165,
-          summer_holiday: 250,
-          holiday: null,
-          part_summer_holiday: 175,
-          three_day_summer_holiday: 185
+          full: 260,
+          part: 145
         },
         threes: {
-          full: 230,
-          part: 125,
-          three_day: 155,
-          summer_holiday: 240,
-          holiday: null,
-          part_summer_holiday: 165,
-          three_day_summer_holiday: 180
+          full: 245,
+          part: 135
         },
         prek: {
-          full: 215,
-          part: 125,
-          three_day: 155,
-          summer_holiday: 230,
-          holiday: null,
-          part_summer_holiday: 160,
-          three_day_summer_holiday: 170
+          full: 240,
+          part: 135
         },
         school: {
-          full: 135,
-          part: 100,
-          three_day: 110,
-          summer_holiday: 185,
-          holiday: 160,
-          part_summer_holiday: 145,
-          three_day_summer_holiday: 165
+          full: 140,
+          part: 105
         }
       }
     };
@@ -549,19 +455,8 @@
 
     const rateLabels = {
       full: 'Full Time',
-      part: 'Part Time',
-      three_day: '3 Day',
-      summer_holiday: 'Summer',
-      holiday: 'School Holiday',
-      part_summer_holiday: 'Part-Time Summer',
-      three_day_summer_holiday: '3-Day Summer'
+      part: 'Part Time'
     };
-
-    const summerDefaultEndDate = new Date('2026-08-01T00:00:00');
-
-    function shouldDefaultToSummer() {
-      return new Date() < summerDefaultEndDate;
-    }
 
     const locationInfo = {
       pearland: {
@@ -594,8 +489,8 @@
           <label for="age-${i}">Age Group:</label>
           <select id="age-${i}" name="age" onchange="updateEnrollmentOptions(${i})">
             <option value="">--Select Age Group--</option>
-            <option value="infant">Infant (6 weeks - 12 months)</option>
-            <option value="pretoddler">Pre-Toddler (13-23 months)</option>
+            <option value="infant">Infant (6 weeks - 17 months)</option>
+            <option value="pretoddler">Pre-Toddler (18-23 months)</option>
             <option value="toddler">Toddler (24-35 months)</option>
             <option value="threes">Three's (36-48 months)</option>
             <option value="prek">Pre-K (4-5 years)</option>
@@ -606,11 +501,6 @@
           <select id="rate-${i}" name="rate" onchange="updateEnrollmentNote(${i})">
             <option value="full">Full Time</option>
             <option value="part">Part Time</option>
-            <option value="three_day">3 Day</option>
-            <option value="summer_holiday">Summer</option>
-            <option value="holiday">School Holiday</option>
-            <option value="part_summer_holiday">Part-Time Summer</option>
-            <option value="three_day_summer_holiday">3-Day Summer</option>
           </select>
           <p id="enrollment-note-${i}" style="display: none; color: var(--fco-blue); margin-top: 5px;"></p>
         `;
@@ -638,12 +528,7 @@
       const rateSelect = document.getElementById(`rate-${childIndex}`);
       const noteElement = document.getElementById(`enrollment-note-${childIndex}`);
       
-      if (rateSelect.value === 'holiday') {
-        noteElement.textContent = 'School Holiday rates apply during Spring Break and the December holiday weeks.';
-        noteElement.style.display = 'block';
-      } else {
-        noteElement.style.display = 'none';
-      }
+      noteElement.style.display = 'none';
     }
 
     function updateEnrollmentOptions(childIndex) {
@@ -670,10 +555,7 @@
         });
 
         const firstVisibleOption = Array.from(rateSelect.options).find(option => option.style.display !== 'none');
-        const summerOption = rateSelect.querySelector('option[value="summer_holiday"]');
-        if (shouldDefaultToSummer() && summerOption && summerOption.style.display !== 'none') {
-          rateSelect.value = 'summer_holiday';
-        } else if (firstVisibleOption) {
+        if (firstVisibleOption) {
           rateSelect.value = firstVisibleOption.value;
         }
         updateEnrollmentNote(childIndex);
