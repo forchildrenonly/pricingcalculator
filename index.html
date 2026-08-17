@@ -368,79 +368,133 @@
       friendswood: {
         infant: {
           full: 295,
-          part: null
+          part: null,
+          three_day: null,
+          holiday: null,
+          morning_only: null
         },
         pretoddler: {
           full: 285,
-          part: null
+          part: null,
+          three_day: null,
+          holiday: null,
+          morning_only: null
         },
         toddler: {
           full: 270,
-          part: 160
+          part: 160,
+          three_day: 185,
+          holiday: null,
+          morning_only: null
         },
         threes: {
           full: 255,
-          part: 155
+          part: 155,
+          three_day: 175,
+          holiday: null,
+          morning_only: null
         },
         prek: {
-          full: 250,
-          part: 145
+          full: 246,
+          part: 145,
+          three_day: 170,
+          holiday: null,
+          morning_only: null
         },
         school: {
           full: 148,
-          part: 108
+          part: 108,
+          three_day: 118,
+          holiday: 170,
+          morning_only: null
         }
       },
       league_city: {
         infant: {
           full: 270,
-          part: null
+          part: null,
+          three_day: null,
+          holiday: null,
+          morning_only: null
         },
         pretoddler: {
           full: 255,
-          part: null
+          part: null,
+          three_day: null,
+          holiday: null,
+          morning_only: null
         },
         toddler: {
           full: 245,
-          part: 150
+          part: 150,
+          three_day: 170,
+          holiday: null,
+          morning_only: null
         },
         threes: {
           full: 235,
-          part: 140
+          part: 140,
+          three_day: 160,
+          holiday: null,
+          morning_only: null
         },
         prek: {
           full: 215,
-          part: 130
+          part: 130,
+          three_day: 150,
+          holiday: null,
+          morning_only: null
         },
         school: {
           full: 145,
-          part: 100
+          part: 100,
+          three_day: 110,
+          holiday: 160,
+          morning_only: 75
         }
       },
       pearland: {
         infant: {
           full: 285,
-          part: null
+          part: null,
+          three_day: null,
+          holiday: null,
+          morning_only: null
         },
         pretoddler: {
           full: 275,
-          part: 165
+          part: 165,
+          three_day: 195,
+          holiday: null,
+          morning_only: null
         },
         toddler: {
           full: 260,
-          part: 145
+          part: 145,
+          three_day: 175,
+          holiday: null,
+          morning_only: null
         },
         threes: {
           full: 245,
-          part: 135
+          part: 135,
+          three_day: 165,
+          holiday: null,
+          morning_only: null
         },
         prek: {
-          full: 240,
-          part: 135
+          full: 236,
+          part: 135,
+          three_day: 165,
+          holiday: null,
+          morning_only: null
         },
         school: {
           full: 140,
-          part: 105
+          part: 105,
+          three_day: 115,
+          holiday: 160,
+          morning_only: null
         }
       }
     };
@@ -456,9 +510,11 @@
 
     const rateLabels = {
       full: 'Full Time',
-      part: 'Part Time'
+      part: 'Part Time',
+      three_day: '3 Day',
+      holiday: 'School Holiday',
+      morning_only: 'Morning Only'
     };
-
     const locationInfo = {
       pearland: {
         address: '2302 E Broadway St, Pearland, TX 77581',
@@ -502,6 +558,9 @@
           <select id="rate-${i}" name="rate" onchange="updateEnrollmentNote(${i})">
             <option value="full">Full Time</option>
             <option value="part">Part Time</option>
+            <option value="three_day">3 Day</option>
+            <option value="holiday">School Holiday</option>
+            <option value="morning_only">Morning Only</option>
           </select>
           <p id="enrollment-note-${i}" style="display: none; color: var(--fco-blue); margin-top: 5px;"></p>
         `;
